@@ -374,4 +374,6 @@ These primitives are only defined when the result itself is a pure rational.
 
 ### Sort: string
 
-No primitives defined.
+```
++               ; concatenation
+```
