@@ -29,6 +29,13 @@ impl Sort for StringSort {
         let sym = Symbol::from(NonZeroU32::new(value.bits as _).unwrap());
         Expr::Lit(Literal::String(sym))
     }
+
+    fn register_primitives(self: Arc<Self>, eg: &mut EGraph) {
+        add_primitives!(eg, "+" = |a: Symbol, b: Symbol| -> Symbol {
+            // TODO: This does not work. Not sure why
+            Symbol::from(format!("{}{}", a.as_str(), b.as_str()))
+        });
+    }
 }
 
 // TODO could use a local symbol table
